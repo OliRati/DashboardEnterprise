@@ -8,9 +8,11 @@ if (!is_numeric($idEmploye)) {
     dd("cet employé n'existe pas !!!");
 }
 
+$errors = [];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['envoyer'])) {
-        
+
         require PHP_ROOT . "/employe/validation-employe.php";
 
         if (!empty($prenom) && !empty($nom) && !empty($sexe) && !empty($service) && !empty($date_embauche) && !empty($salaire)) {
