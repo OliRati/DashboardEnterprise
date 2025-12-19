@@ -83,6 +83,17 @@ function getEmploye($pdo, $id)
     return $employe;
 }
 
+function getCountEmploye($pdo)
+{
+    $sql = "SELECT COUNT(*) AS nb FROM employes";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $nb = $stmt->fetch();
+
+    return $nb['nb'];
+}
+
 function addEmploye($pdo, $prenom, $nom, $sexe, $service, $date_embauche, $salaire)
 {
     $sql = "INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire ) VALUES (:prenom, :nom, :sexe, :service, :date_embauche, :salaire)";
