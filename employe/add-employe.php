@@ -6,7 +6,6 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['envoyer'])) {
-
         $prenom = "";
         $nom = "";
         $sexe = "";
@@ -93,4 +92,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $salaire = "";
 }
 
-include PHP_ROOT . "/views/employe/add-employe-view.php";
+$rubrique = "Ajouter un employé";
+include PHP_ROOT . "/views/employe/employe-view.php";

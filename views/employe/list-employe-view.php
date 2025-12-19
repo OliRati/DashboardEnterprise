@@ -1,7 +1,7 @@
 <?php
 require PHP_ROOT . "/views/partials/head.php"; ?>
 
-<h1>Employes list</h1>
+<h1>Liste des employés</h1>
 
 <div style="margin: 1rem">
     <a href="<?= WEB_ROOT . "/employe/add-employe.php" ?>" role="button" class="outline">

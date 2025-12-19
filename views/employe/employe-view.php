@@ -1,7 +1,7 @@
 <?php
 require PHP_ROOT . "/views/partials/head.php"; ?>
 
-<h1>Employes list</h1>
+<h1><?= $rubrique ?></h1>
 
 <div style="margin: 1rem">
 
@@ -33,7 +33,9 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
 
         <div class="form-line">
             <button type="submit" name="envoyer">Envoyer</button>
-            <button type="button">Annuler</button>
+            <button type="button" onclick="window.location.href='<?= WEB_ROOT . "/employe/list-employe.php" ?>';">
+                Annuler
+            </button>
         </div>
 
         <?php if (isset($errors)) { ?>
