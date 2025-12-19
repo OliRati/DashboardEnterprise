@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure footer stay at botom on small pages */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    main {
+        flex: 1;
+    }
+}
+
+header {
+    color: white;
+    background-color: #333;
+    padding: 1rem;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: white;
+        padding: 0.5rem;
+    }
+}
+
+main {
+    color:antiquewhite;
+    background-color: #444;
+}
+
+footer {
+    color: white;
+    background-color: #333;
+    padding: 1rem;
+
+    div {
+        text-align: center;
+        font-size: 0.8rem;
+        color:aquamarine;
+    }
+}
+
+.container {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
