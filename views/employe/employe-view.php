@@ -19,8 +19,19 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
             <input type="text" name="sexe" id="sexe" value="<?= $sexe ?>">
         </div>
         <div class="form-line">
-            <label for="service">Service</label>
-            <input type="text" name="service" id="service" value="<?= $service ?>">
+            <label for="id_services">Service</label>
+            <select name="id_services" id="id_services">
+                <?php echo "Services = $id_services"; ?>
+                <?php if ($id_services === "") { ?>
+                    <option value="" disabled selected>Selectionnez un service</option>
+                <?php }
+                foreach ($serviceList as $item) { ?>
+
+                    <option value="<?= $item['id_services'] ?>" <?php if ($item['id_services'] == $id_services) echo 'selected'; ?>>
+                        <?= $item['service'] ?>
+                    </option>
+                <?php } ?>
+            </select>
         </div>
         <div class="form-line">
             <label for="date_embauche">Date d'embauche</label>

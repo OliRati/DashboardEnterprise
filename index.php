@@ -4,10 +4,38 @@ require PHP_ROOT . "/connexiondb.php";
 
 require PHP_ROOT . "/views/partials/head.php"; ?>
 
-<h1>Synthese</h1>
+<h1>Synthèse</h1>
 
 <div class="container">
-    <p>Nombre total d'employés : <?= getCountEmploye($pdo) ?></p>
+    <p><span class="stats-title">Effectifs</span><br>
+        <span class="stats-name tab">Nombre total d'employés</span><span
+            class="stats-value"><?= getCountEmploye($pdo) ?></span><br>
+        <span class="stats-name tab">Nombre de services</span><span class="stats-value"><?= getCountService($pdo) ?></span>
+    </p>
+    <p><span class="stats-title">Salaire mensuel moyen</span><br>
+        <span class="stats-name tab">Global</span><span class="stats-value"><?= getMeanSalary($pdo) ?> €</span><br>
+        <?php $means = getMeanSalaryPerSex($pdo);
+        foreach ($means as $mean) {
+            if ($mean['sexe'] == "m") { ?>
+                <span class="stats-name tab">Hommes</span><span class="stats-value"><?= $mean['salaire_moyen'] ?> €</span><br>
+            <?php } elseif ($mean['sexe'] == "f") { ?>
+                <span class="stats-name tab">Femmes</span><span class="stats-value"><?= $mean['salaire_moyen'] ?> €</span><br>
+            <?php } ?>
+        <?php } ?>
+    </p>
+
+    <p>
+        <span class="stats-title">Salaire mensuel moyen par service</span><br>
+        <?php
+        $means = getMeanSalaryPerService($pdo);
+        foreach ($means as $mean) { ?>
+            <span class="stats-name tab"><?= $mean['service'] ?></span><span
+                class="stats-value"><?= $mean['salaire_moyen'] ?> €</span><br>
+        <?php } ?>
+    </p>
+    </p>
+
+
 </div>
 
 <?php require PHP_ROOT . "/views/partials/tail.php"; ?>

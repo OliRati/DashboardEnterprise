@@ -64,7 +64,7 @@ function isValidDate(string $date, string $format = 'd/m/Y'): bool
  */
 function getListEmploye($pdo)
 {
-    $sql = "SELECT * FROM employes ORDER BY id_employes";
+    $sql = "SELECT * FROM employes e JOIN services s ON e.id_services = s.id_services ORDER BY id_employes";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $employes = $stmt->fetchAll();
@@ -72,9 +72,19 @@ function getListEmploye($pdo)
     return $employes;
 }
 
+function getListService($pdo)
+{
+    $sql = "SELECT * FROM services ORDER BY id_services";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $services = $stmt->fetchAll();
+
+    return $services;
+}
+
 function getEmploye($pdo, $id)
 {
-    $sql = "SELECT * FROM employes WHERE id_employes = :id";
+    $sql = "SELECT * FROM employes e JOIN services s ON e.id_services = s.id_services WHERE id_employes = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -94,15 +104,26 @@ function getCountEmploye($pdo)
     return $nb['nb'];
 }
 
-function addEmploye($pdo, $prenom, $nom, $sexe, $service, $date_embauche, $salaire)
+function getCountService($pdo)
 {
-    $sql = "INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire ) VALUES (:prenom, :nom, :sexe, :service, :date_embauche, :salaire)";
-    $stm = $pdo->prepare($sql);
-    $state = $stm->execute([
+    $sql = "SELECT COUNT(*) AS nb FROM services";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $nb = $stmt->fetch();
+
+    return $nb['nb'];
+}
+
+function addEmploye($pdo, $prenom, $nom, $sexe, $id_services, $date_embauche, $salaire)
+{
+    $sql = "INSERT INTO employes (prenom, nom, sexe, id_services, date_embauche, salaire ) VALUES (:prenom, :nom, :sexe, :id_services, :date_embauche, :salaire)";
+    $stmt = $pdo->prepare($sql);
+    $state = $stmt->execute([
         ':prenom' => $prenom,
         ':nom' => $nom,
         ':sexe' => $sexe,
-        ':service' => $service,
+        ':id_services' => $id_services,
         ':date_embauche' => $date_embauche,
         ':salaire' => $salaire
     ]);
@@ -110,16 +131,16 @@ function addEmploye($pdo, $prenom, $nom, $sexe, $service, $date_embauche, $salai
     return $state;
 }
 
-function updateEmploye($pdo, $idEmploye, $prenom, $nom, $sexe, $service, $date_embauche, $salaire)
+function updateEmploye($pdo, $idEmploye, $prenom, $nom, $sexe, $id_services, $date_embauche, $salaire)
 {
-    $sql = "UPDATE employes SET prenom = :prenom, nom = :nom, sexe = :sexe, service = :service, date_embauche = :date_embauche, salaire = :salaire WHERE id_employes = :id_employes";
-    $stm = $pdo->prepare($sql);
+    $sql = "UPDATE employes SET prenom = :prenom, nom = :nom, sexe = :sexe, id_services = :id_services, date_embauche = :date_embauche, salaire = :salaire WHERE id_employes = :id_employes";
+    $stmt = $pdo->prepare($sql);
 
-    $result = $stm->execute([
+    $result = $stmt->execute([
         ':prenom' => $prenom,
         ':nom' => $nom,
         ':sexe' => $sexe,
-        ':service' => $service,
+        ':id_services' => $id_services,
         ':date_embauche' => $date_embauche,
         ':salaire' => $salaire,
         ':id_employes' => $idEmploye
@@ -130,10 +151,53 @@ function updateEmploye($pdo, $idEmploye, $prenom, $nom, $sexe, $service, $date_e
 
 function deleteEmploye($pdo, $id)
 {
-    $stm = $pdo->prepare("DELETE FROM employes where id_employes = :id");
-    $stm->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt = $pdo->prepare("DELETE FROM employes where id_employes = :id");
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-    $result = $stm->execute();
+    $result = $stmt->execute();
 
     return $result;
+}
+
+function getMeanSalary($pdo)
+{
+    $sql = "SELECT ROUND(AVG(salaire),0) AS salaire_moyen FROM employes";
+    $stmt = $pdo->prepare($sql);
+    $result = $stmt->execute();
+
+    if ($result) {
+        $value = $stmt->fetch();
+
+        return $value['salaire_moyen'];
+    }
+
+    return false;
+}
+
+function getMeanSalaryPerSex($pdo)
+{
+    $sql = "SELECT sexe, ROUND(AVG(salaire),0) AS salaire_moyen FROM employes GROUP BY sexe";
+    $stmt = $pdo->prepare($sql);
+    $result = $stmt->execute();
+
+    if ($result) {
+        $value = $stmt->fetchAll();
+        return $value;
+    }
+
+    return false;
+}
+
+function getMeanSalaryPerService($pdo)
+{
+    $sql = "SELECT e.id_services, service, ROUND(AVG(salaire),0) AS salaire_moyen FROM employes e JOIN services s ON e.id_services = s.id_services  GROUP BY id_services";
+    $stmt = $pdo->prepare($sql);
+    $result = $stmt->execute();
+
+    if ($result) {
+        $value = $stmt->fetchAll();
+        return $value;
+    }
+
+    return false;
 }

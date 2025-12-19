@@ -33,12 +33,12 @@ header {
     a:hover {
         transition: all 0.3s;
         border: 1px solid gray;
-        color:antiquewhite;
+        color: antiquewhite;
     }
 }
 
 main {
-    color:antiquewhite;
+    color: antiquewhite;
     background-color: #444;
 
     h1 {
@@ -56,7 +56,7 @@ footer {
     div {
         text-align: center;
         font-size: 0.8rem;
-        color:aquamarine;
+        color: aquamarine;
     }
 }
 
@@ -91,4 +91,40 @@ footer {
 
 .error {
     color: lightcoral;
+}
+
+/* Adjust pics.css */
+[role='button'] {
+    margin: 0.5em 0;
+}
+
+table {
+    [role='button'] {
+        margin: 0;
+        padding: 0.2rem 0.4rem;
+        margin-right: 0.5rem;
+    }
+}
+
+.stats-title {
+    color:antiquewhite;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.stats-name {
+    display: inline-block;
+    width: 15rem;
+    color:beige;
+    font-size: 1rem;
+}
+
+.stats-value {
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.tab {
+    margin-left: 2rem;
+    width: 13rem;
 }
