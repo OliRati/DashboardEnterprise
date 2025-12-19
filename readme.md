@@ -37,7 +37,7 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 
 ## Usage
 
-- **Home Page**: [`index.php`](index.php) displays a summary (total employee count).
+- **Home Page**: [`index.php`](index.php) displays a summary (total employee count, total services, mean salaries).
 - **Employee Management**:
   - List employees: [`employe/list-employe.php`](employe/list-employe.php)
   - Add employee: [`employe/add-employe.php`](employe/add-employe.php)
@@ -60,7 +60,7 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 Employee data is validated in [`employe/validation-employe.php`](employe/validation-employe.php) to ensure:
 - Names: 2-30 characters.
 - Sex: 'm' or 'f'.
-- Service: Not empty.
+- Service: Not empty, Numeric value.
 - Hire date: Valid date in YYYY-MM-DD format.
 - Salary: Numeric value.
 
