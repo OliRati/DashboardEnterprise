@@ -10,6 +10,16 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
     <p><span class="stats-title">Effectifs</span><br>
         <span class="stats-name tab">Nombre total d'employés</span><span
             class="stats-value"><?= getCountEmploye($pdo) ?></span><br>
+        <?php $employePerSex = getCountEmployePerSex($pdo);
+        foreach ($employePerSex as $employe) {
+            if ($employe['sexe'] === 'm') { ?>
+                <span class="stats-name tab2">Hommes</span><span class="stats-value"><?= $employe['nb'] ?></span><br>
+            <?php } elseif ($employe['sexe'] === 'f') { ?>
+                <span class="stats-name tab2">Femmes</span><span class="stats-value"><?= $employe['nb'] ?></span><br>
+            <?php }
+        } ?>
+    </p>
+    <p><span class="stats-title">Services</span><br>
         <span class="stats-name tab">Nombre de services</span><span class="stats-value"><?= getCountService($pdo) ?></span>
     </p>
     <p><span class="stats-title">Salaire mensuel moyen</span><br>

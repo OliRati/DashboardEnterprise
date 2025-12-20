@@ -25,7 +25,7 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
 
             <tbody>
                 <?php foreach ($employes as $employe): ?>
-                    <tr>
+                    <tr id="<?= "id".$employe['id_employes'] ?>">
                         <td><?= $employe['id_employes'] ?></td>
                         <td><?= $employe['prenom'] ?></td>
                         <td><?= $employe['nom'] ?></td>

@@ -104,6 +104,20 @@ function getCountEmploye($pdo)
     return $nb['nb'];
 }
 
+function getCountEmployePerSex($pdo)
+{
+    $sql = "SELECT COUNT(*) AS nb, sexe FROM employes GROUP BY sexe";
+    $stmt = $pdo->prepare($sql);
+    $state = $stmt->execute();
+
+    if ($state) {
+        $tab = $stmt->fetchAll();
+        return $tab;
+    }
+
+    return false;
+}
+
 function getCountService($pdo)
 {
     $sql = "SELECT COUNT(*) AS nb FROM services";
@@ -157,6 +171,37 @@ function deleteEmploye($pdo, $id)
     $result = $stmt->execute();
 
     return $result;
+}
+
+// Return the id_employes just before given one
+function getIdEmployeBeforeGiven($pdo, $id)
+{
+    $sql = "SELECT MAX(id_employes) AS previous_id FROM employes WHERE id_employes < :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    $status = $stmt->execute();
+
+    if ($status) {
+        $result = $stmt->fetch();
+        return $result['previous_id'];
+    }
+
+    return false;
+}
+
+function getLastIdEmploye($pdo)
+{
+    $sql = "SELECT MAX(id_employes) AS last_id FROM employes";
+    $stmt = $pdo->prepare($sql);
+    $status = $stmt->execute();
+
+    if ($status) {
+        $result = $stmt->fetch();
+        return $result['last_id'];
+    }
+
+    return false;
 }
 
 function getMeanSalary($pdo)

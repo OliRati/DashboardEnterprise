@@ -8,8 +8,13 @@ if (!is_numeric($idEmploye)) {
     dd("cet employé n'existe pas !!!");
 }
 
+$previousId = getIdEmployeBeforeGiven($pdo, $idEmploye);
+
 $state = deleteEmploye($pdo, $idEmploye);
 
 if ($state) {
-    redirect("/employe/list-employe.php");
+    if (isset($previousId))
+        redirect("/employe/list-employe.php#id" . $previousId);
+    else
+        redirect("/employe/list-employe.php");
 }
