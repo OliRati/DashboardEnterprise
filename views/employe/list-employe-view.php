@@ -4,7 +4,7 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
 <h1>Liste des employés</h1>
 
 <div style="margin: 1rem">
-    <a href="<?= WEB_ROOT . "/employe/add-employe.php" ?>" role="button" class="outline">
+    <a href="<?= WEB_ROOT . "?page=add-employe" ?>" role="button" class="outline">
         Ajouter un employe
     </a>
 
@@ -33,9 +33,9 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
                         <td><?= $employe['service'] ?></td>
                         <td><?= $employe['date_embauche'] ?></td>
                         <td><?= $employe['salaire'] ?> &euro;</td>
-                        <td><a href="<?= WEB_ROOT . "/employe/edit-employe.php" . "?id=" . $employe['id_employes'] ?>"
+                        <td><a href="<?= WEB_ROOT . "?page=edit-employe&id=" . $employe['id_employes'] ?>"
                                 role="button" class="secondary">Editer</a>
-                            <a href="<?= WEB_ROOT . "/employe/del-employe.php" . "?id=" . $employe['id_employes'] ?>"
+                            <a href="<?= WEB_ROOT . "?page=del-employe&id=" . $employe['id_employes'] ?>"
                                 role="button"
                                 onclick="return confirm('Etes vous certain de vouloir supprimer cet employé ?');">Supprimer</a>
                         </td>

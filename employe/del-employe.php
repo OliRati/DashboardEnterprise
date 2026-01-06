@@ -13,7 +13,7 @@ $state = deleteEmploye($pdo, $idEmploye);
 
 if ($state) {
     if (isset($previousId))
-        redirect("/employe/list-employe.php#id" . $previousId);
+        redirect("?page=list-employe#id" . $previousId);
     else
-        redirect("/employe/list-employe.php");
+        redirect("?page=list-employe");
 }

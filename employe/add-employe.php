@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($status) {
                 $lastId = getLastIdEmploye($pdo);
                 if (isset($lastId))
-                    redirect("/employe/list-employe.php#id".$lastId);
+                    redirect("?page=list-employe#id".$lastId);
                 else
-                    redirect("/employe/list-employe.php");
+                    redirect("?page=list-employe");
             } else {
                 $errors[] = "Impossible d'enregistrer cet employé.";
             }

@@ -44,7 +44,7 @@ require PHP_ROOT . "/views/partials/head.php"; ?>
 
         <div class="form-line">
             <button type="submit" name="envoyer">Envoyer</button>
-            <button type="button" onclick="window.location.href='<?= WEB_ROOT . "/employe/list-employe.php" ?>';">
+            <button type="button" onclick="window.location.href='<?= WEB_ROOT . "?page=list-employe" ?>';">
                 Annuler
             </button>
         </div>
