@@ -1,8 +1,4 @@
 <?php
-const RELATIVE_DIRECTORY = "/devweb-php/DashboardEnterprise";
-define("PHP_ROOT", $_SERVER['DOCUMENT_ROOT'] . RELATIVE_DIRECTORY);
-define("WEB_ROOT", RELATIVE_DIRECTORY);
-
 /*
  *  Debugging helpers
  */

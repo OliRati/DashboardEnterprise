@@ -1,6 +1,5 @@
 <?php
-require "functions.php";
-require PHP_ROOT . "/connexiondb.php";
+require "includes.php";
 
 require PHP_ROOT . "/views/partials/head.php"; ?>
 

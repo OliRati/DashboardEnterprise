@@ -1,6 +1,5 @@
 <?php
-include '../functions.php';
-require '../connexiondb.php';
+include '../includes.php';
 
 $errors = [];
 
