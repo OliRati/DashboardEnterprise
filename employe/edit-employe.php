@@ -1,6 +1,4 @@
 <?php
-include '../includes.php';
-
 $idEmploye = $_GET['id'] ?? null;
 
 if (!is_numeric($idEmploye)) {

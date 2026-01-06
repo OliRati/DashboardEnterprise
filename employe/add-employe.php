@@ -1,6 +1,4 @@
 <?php
-include '../includes.php';
-
 $errors = [];
 
 $serviceList = getListService($pdo);
