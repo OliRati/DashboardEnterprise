@@ -1,7 +1,7 @@
 <?php
 // This is a sample file for project configuration
 // You must set the required values for your Host
-// and save it as .env.php
+// and save it as env.php
 
 /*
  * Enable more debug outputs
