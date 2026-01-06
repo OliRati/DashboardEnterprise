@@ -11,7 +11,7 @@ const ENABLE_DEBUG = 'on';
 /*
  * Path to the application from Web server root
  */
-const WEB_ROOT = '/devweb-php/AgenceTaxis';
+const WEB_ROOT = '/devweb-php/DashboardEnterprise';
 
 /*
  * Absolute path to PHP server files
