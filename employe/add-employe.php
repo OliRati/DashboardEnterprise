@@ -7,8 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['envoyer'])) {
 
         require PHP_ROOT."/employe/validation-employe.php";
-
-        print_r($id_services);
         
         if (!empty($prenom) && !empty($nom) && !empty($sexe) && !empty($id_services) && !empty($date_embauche) && !empty($salaire)) {
             $status = addEmploye($pdo, $prenom, $nom, $sexe, $id_services, $date_embauche, $salaire);
