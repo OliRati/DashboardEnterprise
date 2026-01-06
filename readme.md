@@ -25,11 +25,12 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 
 2. **Database Setup**:
    - Import the database schema from [`subjects/entreprise.sql`](subjects/entreprise.sql) into your MySQL server.
-   - Update [`connexiondb.php`](connexiondb.php) with your database credentials (host, username, password, database name).
+   - Copy [`env-example.php`](env-example.php) to `env.php` and update with your database credentials (host, username,
+     password, database name).
 
 3. **Configuration**:
-   - Ensure the constants `PHP_ROOT` and `WEB_ROOT` in [`functions.php`](functions.php) match your server setup.
-   - The project assumes a relative directory path `/devweb-php/DashboardEnterprise`.
+   - Ensure the constants `PHP_ROOT` and `WEB_ROOT` in [`env.php`](env.php) match your server setup.
+   - The project assumes a default relative directory path `/devweb-php/DashboardEnterprise`.
 
 4. **Run the Application**:
    - Start your web server (e.g., WAMP).
@@ -37,7 +38,7 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 
 ## Usage
 
-- **Home Page**: [`index.php`](index.php) displays a summary (total employee count, total services, mean salaries).
+- **Home Page**: [`index.php`](index.php) displays a summary (total employee count, total services, mean salaries, ...).
 - **Employee Management**:
   - List employees: [`employe/list-employe.php`](employe/list-employe.php)
   - Add employee: [`employe/add-employe.php`](employe/add-employe.php)
@@ -47,22 +48,27 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 
 ## File Structure
 
-- `index.php`: Main dashboard page.
+- `.gitignore`: Setup to keep your local config `env.php` out of github repos.
+- `connexiondb.php`: Database connection management.
+- `env-example.php`: Example Server and Database configuration.
 - `functions.php`: Utility functions and database operations.
-- `connexiondb.php`: Database connection.
+- `home.php`: Main dashboard statistics view.
+- `includes.php`: Main include file for dependencies
+- `index.php`: Main dashboard page.
+- `routes.php`: Catalog of valid routes to sub pages.
 - `employe/`: Employee management scripts.
 - `views/`: HTML templates and partials.
 - `assets/`: CSS stylesheets.
-- `subjects/`: Database schema and additional documentation.
+- `datas/`: Database schema and additional documentation.
 
 ## Validation
 
 Employee data is validated in [`employe/validation-employe.php`](employe/validation-employe.php) to ensure:
 - Names: 2-30 characters.
 - Sex: 'm' or 'f'.
-- Service: Not empty, Numeric value.
+- Service: Not empty, Numeric value id from services table.
 - Hire date: Valid date in YYYY-MM-DD format.
-- Salary: Numeric value.
+- Salary: Numeric value 0-100000 €.
 
 ## License
 
