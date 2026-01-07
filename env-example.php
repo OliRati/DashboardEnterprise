@@ -26,7 +26,7 @@ define( 'PHP_ROOT', $_SERVER['DOCUMENT_ROOT'] . WEB_ROOT );
 const DB_HOSTNAME = 'db';
 
 // Database name 
-const DB_NAME = 'phpdb';
+const DB_NAME = 'entreprise';
 
 // Database user
 const DB_USER = 'root';
