@@ -21,7 +21,7 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 ## Installation and Setup
 
 1. **Clone or Download the Project**:
-   Place the project files in your web server's root directory (e.g., `c:\wamp64\www\devweb-php\DashboardEnterprise`).
+   Place the project files in your web server's root directory (e.g., `c:\wamp64\www\DashboardEnterprise`).
 
 2. **Database Setup**:
    - Import the database schema from [`subjects/entreprise.sql`](subjects/entreprise.sql) into your MySQL server.
@@ -30,7 +30,7 @@ A simple PHP-based web application for managing employees in an enterprise. It p
 
 3. **Configuration**:
    - Ensure the constants `PHP_ROOT` and `WEB_ROOT` in [`env.php`](env.php) match your server setup.
-   - The project assumes a default relative directory path `/devweb-php/DashboardEnterprise`.
+   - The project assumes a default relative directory path `/DashboardEnterprise`.
 
 4. **Run the Application**:
    - Start your web server (e.g., WAMP).
