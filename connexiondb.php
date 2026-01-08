@@ -24,7 +24,7 @@ function showError($title, $text)
         @keyframes error-blink {
             0% {
                 border: 0.4rem solid lightcoral;
-            };
+            }
 
             50% {
                 border: 0.4rem solid bisque;
